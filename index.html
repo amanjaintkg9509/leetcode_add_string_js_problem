@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /**
+   * @param {string} num1
+   * @param {string} num2
+   * @return {string}
+   * 
+   * Req.:- Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.
+   * Follow up: Could you solve it without using any built-in BigInteger library or converting the inputs to integer directly?
+   * Constraints:
+        1 <= num1.length, num2.length <= 104
+        num1 and num2 consist of only digits.
+        num1 and num2 don't have any leading zeros except for the zero itself.    
+   */
+
+  /**
+   * Pesudo code:-
+   * 1. get two values and check value is number or not after convert parseFloat or ParseInt.
+   * 2. if condition true then return undefined
+   * 3. convert both value using parseFloat function, so number both values are convert in Float value.
+   * 4. create new variable and save addition using add arthmetic option.
+   * 5. sum is holding float value after addition operation now we need to convert in string and check if sum value is
+   * exponential show convert in complete value and then convert so, we can use toLocaleString() and pass fullWide and useGrouping
+   * status false otherwise, it's provide grouping value like: 2,000,0000,000.
+   */
+
+  let addStrings = (num1, num2) => {
+    if (isNaN(parseFloat(num1)) || isNaN(parseFloat(num2))) {
+      return;
+    }
+
+    let carry = 0;
+    if (num1.length < num2.length) {
+      let temp = num1;
+      num1 = num2;
+      num2 = temp;
+    }
+    num1 = num1.split("").reverse().join("");
+    num2 = num2.split("").reverse().join("");
+    let sum = "";
+    num1 = num1.split("");
+
+    num1.forEach((element, i) => {
+      let sumDigit = 0;
+      sumDigit =
+        Number(num1[i] ? num1[i] : 0) + Number(num2[i] ? num2[i] : 0) + carry;
+
+      if (sumDigit > 9) {
+        sumDigit =
+          i + 1 == num1.length
+            ? sumDigit.toString().split("").reverse().join("")
+            : sumDigit - 10;
+        carry = 1;
+        sum += sumDigit.toString();
+      } else {
+        carry = 0;
+        sum += sumDigit.toString();
+      }
+    });
+
+    // console.log(sum);
+    return sum.split("").reverse().join("");
+  };
+
+  // var addStrings = function (num1, num2) {
+  //   var num1Length = num1.length;
+  //   var num2Length = num2.length;
+  //   //console.log(num1Length);
+  //   //console.log(num2Length);
+  //   if (num1Length < num2Length) {
+  //     var temp = num1;
+  //     num1 = num2;
+  //     num2 = temp;
+  //   }
+  //   //console.log(num1);
+  //   //console.log(num2);
+
+  //   var num1Right;
+  //   var num2Right;
+  //   var carry = 0;
+  //   var sum;
+  //   var res = "";
+
+  //   for (var i = 0; i < num1.length; i++) {
+  //     console.log(num1.length, "-----------------");
+  //     num1Right = Number(num1.charAt(num1.length - 1 - i));
+  //     //console.log(num1Right);
+  //     num2Right = Number(num2.charAt(num2.length - 1 - i));
+  //     //console.log(num2Right);
+  //     sum = String(carry + num1Right + num2Right);
+  //     //console.log(sum);
+  //     //console.log(sum.length);
+  //     if (sum.length > 1) {
+  //       carry = Number(sum.charAt(0));
+  //       //console.log(carry);
+  //       res += sum.charAt(1);
+  //     } else {
+  //       carry = 0;
+  //       res += sum.charAt(0);
+  //     }
+  //   }
+  //   return reverseString(res);
+  // };
+
+  // function reverseString(str) {
+  //   var splitString = str.split("");
+  //   var reverseArray = splitString.reverse();
+  //   var joinArray = reverseArray.join("");
+  //   return joinArray;
+  // }
+
+  console.log(addStrings("11", "123"));
+  console.log(addStrings("1", "9"));
+  console.log(addStrings("45455", "7778"));
+  console.log(addStrings("0", "0"));
+  console.log(addStrings("9333852702227987", "85731737104263"));
+  console.log(
+    addStrings("999999999999999999999999", "999999999999999999999999")
+  );
+</script>
