@@ -71,53 +71,6 @@
     return sum.split("").reverse().join("");
   };
 
-  // var addStrings = function (num1, num2) {
-  //   var num1Length = num1.length;
-  //   var num2Length = num2.length;
-  //   //console.log(num1Length);
-  //   //console.log(num2Length);
-  //   if (num1Length < num2Length) {
-  //     var temp = num1;
-  //     num1 = num2;
-  //     num2 = temp;
-  //   }
-  //   //console.log(num1);
-  //   //console.log(num2);
-
-  //   var num1Right;
-  //   var num2Right;
-  //   var carry = 0;
-  //   var sum;
-  //   var res = "";
-
-  //   for (var i = 0; i < num1.length; i++) {
-  //     console.log(num1.length, "-----------------");
-  //     num1Right = Number(num1.charAt(num1.length - 1 - i));
-  //     //console.log(num1Right);
-  //     num2Right = Number(num2.charAt(num2.length - 1 - i));
-  //     //console.log(num2Right);
-  //     sum = String(carry + num1Right + num2Right);
-  //     //console.log(sum);
-  //     //console.log(sum.length);
-  //     if (sum.length > 1) {
-  //       carry = Number(sum.charAt(0));
-  //       //console.log(carry);
-  //       res += sum.charAt(1);
-  //     } else {
-  //       carry = 0;
-  //       res += sum.charAt(0);
-  //     }
-  //   }
-  //   return reverseString(res);
-  // };
-
-  // function reverseString(str) {
-  //   var splitString = str.split("");
-  //   var reverseArray = splitString.reverse();
-  //   var joinArray = reverseArray.join("");
-  //   return joinArray;
-  // }
-
   console.log(addStrings("11", "123"));
   console.log(addStrings("1", "9"));
   console.log(addStrings("45455", "7778"));
